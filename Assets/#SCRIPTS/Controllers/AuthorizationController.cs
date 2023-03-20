@@ -89,8 +89,8 @@ namespace Game.Auth
                 return;
             }
 
-            _registrationScreen.UpdateMessage("");
-            _loginScreen.UpdateMessage("");
+            _registrationScreen.ResetFields();
+            _loginScreen.ResetFields();
 
             AuthorizationSuccessfull?.Invoke(data);
         }
