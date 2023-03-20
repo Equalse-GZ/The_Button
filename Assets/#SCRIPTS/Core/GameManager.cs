@@ -16,6 +16,7 @@ namespace Game.Core
 
         [Header("Controllers")]
         [SerializeField] private AuthorizationController _authorizationController;
+        [SerializeField] private AvatarsController _avatarsController;
         [SerializeField] private MainButtonController _mainButtonController;
         [SerializeField] private TicketsBankController _ticketsBankController;
         [SerializeField] private ScreensController _screensController;
@@ -37,8 +38,8 @@ namespace Game.Core
         public static InteractionService InteractionService { get; private set; }
         public static GlobalTimer GlobalTimer { get; private set; }
         public static UserData UserData { get; set; }
+        public static AvatarsController AvatarsController { get; set; }
 
-        public static Player Player { get; private set; }
         private static AuthorizationController AuthorizationController;
 
         private int _userID = 0;
@@ -91,6 +92,8 @@ namespace Game.Core
 
             _bonusRepositoryController.Initialize(Config.DataBaseUrl);
             BonusRepositoryController = _bonusRepositoryController;
+
+            AvatarsController = _avatarsController;
 
             UserInterface.GetScreen<ProfileScreen>().UpdateInfo(userData);
 

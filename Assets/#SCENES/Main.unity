@@ -9069,9 +9069,9 @@ RectTransform:
   m_Father: {fileID: 1894049491}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 547, y: 951.9999}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -173, y: -308}
   m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &407921249
@@ -9209,6 +9209,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1235482934}
+  - {fileID: 718215974}
   - {fileID: 1099095722}
   - {fileID: 26679536}
   - {fileID: 1536530433}
@@ -15340,6 +15341,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 714240450}
   m_CullTransparentMesh: 1
+--- !u!1 &718215973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718215974}
+  - component: {fileID: 718215975}
+  m_Layer: 0
+  m_Name: '[Controller] Avatars'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &718215974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718215973}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 413802438}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &718215975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718215973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969117ba20611b64eacf1c29e9e67e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _avatars:
+  - {fileID: 11400000, guid: 3f9ad09e7e9f1d043ae2a732307313ff, type: 2}
+  - {fileID: 11400000, guid: 981cccc153007f04aab166e7e611b320, type: 2}
+  - {fileID: 11400000, guid: 3b62f69014a25be4b8f5e3148e64c839, type: 2}
+  - {fileID: 11400000, guid: d2530ab28abf62945902a1f37a1ba80b, type: 2}
+  - {fileID: 11400000, guid: 2f2d2f9383ad156478983e59dd94b780, type: 2}
+  - {fileID: 11400000, guid: 44a42f53dfe55e2469f8c72536756596, type: 2}
+  - {fileID: 11400000, guid: 43e5d5a78a3de194883e119cba78e800, type: 2}
+  - {fileID: 11400000, guid: 6d0ecd3f44b26394795da7defcd35cf3, type: 2}
+  - {fileID: 11400000, guid: 2c4debb3d68d95743bd647e30dac3d46, type: 2}
+  - {fileID: 11400000, guid: 122a993ae61edbd42a3b7bbbfbe94f91, type: 2}
+  - {fileID: 11400000, guid: a43e8863849a05440844525c339b53f4, type: 2}
+  - {fileID: 11400000, guid: 7258c301191b7e84d8124c14e32e573e, type: 2}
+  - {fileID: 11400000, guid: b3d4c8c7be93e1a43803405523b97036, type: 2}
+  - {fileID: 11400000, guid: aa7afe444cc429b458318ee4975f15e0, type: 2}
+  - {fileID: 11400000, guid: 6503eec6b529e3f46b1dc8921c5ccef0, type: 2}
+  - {fileID: 11400000, guid: 9542cb285e7e66f4888fb76efc12c459, type: 2}
+  - {fileID: 11400000, guid: 0d9bbc33aa15c474b9121f4326eb249e, type: 2}
+  - {fileID: 11400000, guid: db5d98c505b916c4494d2116d6714aac, type: 2}
+  - {fileID: 11400000, guid: abb281c6896d994428e7f5dc41fa1093, type: 2}
+  - {fileID: 11400000, guid: ba3cb58f4277f644fa428d987a4ff63f, type: 2}
+  - {fileID: 11400000, guid: 5e540b679f9afc84e982c7e164bfa997, type: 2}
+  - {fileID: 11400000, guid: 9231fdef7133fe64ebaff12278a31236, type: 2}
+  - {fileID: 11400000, guid: 119268a66b8dc5b48b898d1a9a4038b9, type: 2}
+  - {fileID: 11400000, guid: 6e19d7bee7102eb46973302871a29c8f, type: 2}
+  - {fileID: 11400000, guid: f728cdd7ed6792d41bba8b1d241042a6, type: 2}
+  - {fileID: 11400000, guid: 5a612fab875476c4babf9e2bbe6e85fd, type: 2}
+  - {fileID: 11400000, guid: 4f52bfb6872263041a3044560eb84283, type: 2}
+  - {fileID: 11400000, guid: 82170ca525910ca46a9288bb78006492, type: 2}
+  - {fileID: 11400000, guid: 2f6502f5e944d2e4dba5044e999bc0cb, type: 2}
+  - {fileID: 11400000, guid: c8822b317aaa0454e80da16b2ad54316, type: 2}
 --- !u!1 &719921606
 GameObject:
   m_ObjectHideFlags: 0
@@ -19040,10 +19116,10 @@ RectTransform:
   m_Father: {fileID: 1894049491}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 204, y: 975}
-  m_SizeDelta: {x: 931.4, y: 197.9}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -616, y: -305}
+  m_SizeDelta: {x: 931.4, y: 197.90002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &894759843
 MonoBehaviour:
@@ -22298,10 +22374,10 @@ RectTransform:
   m_Father: {fileID: 1894049491}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 204, y: 904}
-  m_SizeDelta: {x: 931.4, y: 115.565}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -616, y: -376}
+  m_SizeDelta: {x: 931.4, y: 115.56494}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1073141469
 MonoBehaviour:
@@ -33016,7 +33092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 252, y: -326}
+  m_AnchoredPosition: {x: 189, y: -262}
   m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675200764
@@ -34981,6 +35057,7 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: 8366ee2bb3ea25f4cb2062433336f276, type: 2}
   _webRequestSender: {fileID: 987666649}
   _authorizationController: {fileID: 1235482935}
+  _avatarsController: {fileID: 718215975}
   _mainButtonController: {fileID: 1099095723}
   _ticketsBankController: {fileID: 26679537}
   _screensController: {fileID: 1536530434}
@@ -35626,7 +35703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1894049491
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35666,6 +35743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc77699977de15643bd770927763ff92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _icon: {fileID: 1675200764}
   _nickNameText: {fileID: 894759843}
   _ticketsText: {fileID: 1073141469}
   _teamActiveBlock: {fileID: 485308880}

@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6ba3be2aabb374f8393ad8a5a592e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _icon: {fileID: 7341925515860621722}
   _nickNameText: {fileID: 7341925515922456012}
   _balanceText: {fileID: 7341925517314106847}
   _placeText: {fileID: 3829025260535985781}
@@ -84,7 +85,7 @@ RectTransform:
   m_GameObject: {fileID: 7341925515860621720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3005, y: 1.3005, z: 1.3005}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7341925515820927298}
@@ -92,7 +93,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 137.3, y: 0}
+  m_AnchoredPosition: {x: 137.3, y: 34.2}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7341925515860621723

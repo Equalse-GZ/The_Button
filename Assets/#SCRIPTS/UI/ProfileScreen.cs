@@ -1,5 +1,6 @@
 using Game.Core;
 using Game.Data;
+using Game.Services;
 using Game.Web;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ namespace Game.UI
 {
     public class ProfileScreen : ScreenUI
     {
+        [SerializeField] private Image _icon;
         [SerializeField] private Text _nickNameText;
         [SerializeField] private Text _ticketsText;
 
@@ -18,8 +20,9 @@ namespace Game.UI
 
         public void UpdateInfo(UserData data)
         {
+            _icon.sprite = GameManager.AvatarsController.GetAvatar(data.Icon).Icon;
             _nickNameText.text = data.Login;
-            GameManager.TicketsBankController.TicketsChangedEvent.AddListener(() => _ticketsText.text = "Баланс: " + GameManager.TicketsBankController.Tickets.ToString());
+            GameManager.TicketsBankController.TicketsChangedEvent.AddListener(() => _ticketsText.text = "Баланс: " + NumberConverter.NumToString(GameManager.TicketsBankController.Tickets));
 
             _teamInactiveBlock.Initialize(data);
             _teamActiveBlock.Initialize(data);
