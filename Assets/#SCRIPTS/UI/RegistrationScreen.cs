@@ -13,6 +13,9 @@ namespace Game.UI
         [SerializeField] private InputField _password1Input;
         [SerializeField] private InputField _password2Input;
 
+        [Space(15)]
+        [SerializeField] private AvatarsSelectionMenu _avatarsSelectionMenu;
+
         private AuthorizationController _authorizationController;
 
         public void Initialize(AuthorizationController authorizationController)
@@ -23,6 +26,8 @@ namespace Game.UI
             _loginInput.onValueChanged.AddListener((str) => _loginInput.text = str.Replace(" ", ""));
             _password1Input.onValueChanged.AddListener((str) => _password1Input.text = str.Replace(" ", ""));
             _password2Input.onValueChanged.AddListener((str) => _password2Input.text = str.Replace(" ", ""));
+
+            _avatarsSelectionMenu.Initialize();
         }
 
         public void TryRegister()
@@ -39,19 +44,34 @@ namespace Game.UI
                 return;
             }
 
+            if(_avatarsSelectionMenu.AvatarIsSelected() == false)
+            {
+                UpdateMessage("Пожалуйста, выберите своего аватара");
+                return;
+            }
+
             _message.text = "";
 
             UserData userData = new UserData();
             userData.ID = 0;
             userData.Login = _loginInput.text;
             userData.Password = _password1Input.text;
-            userData.Icon = "M-1";
+            userData.Icon = _avatarsSelectionMenu.GetSelectedAvatar().Name;
 
             _loginInput.text = "";
             _password1Input.text = "";
             _password2Input.text = "";
             
             _authorizationController.Register(userData);
+        }
+
+        public void ResetFields()
+        {
+            _loginInput.text = "";
+            _password1Input.text = "";
+            _password2Input.text = "";
+            _message.text = "";
+            _avatarsSelectionMenu.ResetSelectedAvatar();
         }
 
         public void UpdateMessage(string message)

@@ -42,6 +42,13 @@ namespace Game.UI
             _authorizationController.Login(userData);
         }
 
+        public void ResetFields()
+        {
+            _loginInput.text = "";
+            _passwordInput.text = "";
+            _message.text = "";
+        }
+
         public void UpdateMessage(string message)
         {
             _message.text = message;
