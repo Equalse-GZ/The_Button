@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c266676ed063a848840dfc2b99b45ef, type: 3}
+  m_Name: Golden Island
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 0}
+  _id: 22
+  _name: "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 \u043E\u0441\u0442\u0440\u043E\u0432"
+  _description: 
+  _price: 3500
+  _actionTime: 4800
+  _profit: 1.3
+  CardID: -1

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c266676ed063a848840dfc2b99b45ef, type: 3}
+  m_Name: Marker
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 5c746659e5a62df4d8451168aab8bc5d, type: 3}
+  _id: 29
+  _name: "\u041C\u0430\u0440\u043A\u0435\u0440"
+  _description: 
+  _price: 90
+  _actionTime: 90
+  _profit: 1.5
+  CardID: -1
