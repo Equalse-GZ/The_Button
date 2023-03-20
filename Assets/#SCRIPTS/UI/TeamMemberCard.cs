@@ -33,6 +33,8 @@ namespace Game.UI
             _userData = user;
             _teamData = team;
 
+            _icon.sprite = GameManager.AvatarsController.GetAvatar(user.Icon).Icon;
+
             _currentRoleColorHex = _memberRoleColorHEX;
             if (user.PlayerData.TeamData.Role == "Admin")
             {

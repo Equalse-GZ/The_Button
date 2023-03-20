@@ -18,6 +18,7 @@
 
         for ($i=0; $i < $k; $i++) 
         { 
+            $userData['Icon'] = $db->query("SELECT * FROM `users` WHERE `id` = '{$players[$i]['userID']}'")->fetch_assoc()['icon'];
             $userData['Login'] = $db->query("SELECT * FROM `users` WHERE `id` = '{$players[$i]['userID']}'")->fetch_assoc()['login'];
             $userData['PlayerData']['Tickets'] = $players[$i]['tickets'];
     

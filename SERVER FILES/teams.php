@@ -162,6 +162,7 @@
             $player = $db->query("SELECT * FROM `players` WHERE `userID` = '{$user['id']}'")->fetch_assoc();
 
             $userData['ID'] = $user['id'];
+            $userData['Icon'] = $user['icon'];
             $userData['Login'] = $user['login'];
             $userData['PlayerData']['Tickets'] = $player['tickets'];
             $userData['PlayerData']['TeamData']['Role'] = $members[$i]['role'];
