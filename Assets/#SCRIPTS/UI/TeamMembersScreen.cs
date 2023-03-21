@@ -11,7 +11,7 @@ namespace Game.UI
     {
         [SerializeField] private TeamMemberCard _cardTemplate;
         [SerializeField] private Transform _cardsContent;
-        [SerializeField] private Text _loadingText;
+        [SerializeField] private GameObject _loadingObject;
 
         private List<TeamMemberCard> _memberCards = new List<TeamMemberCard>();
 
@@ -26,7 +26,7 @@ namespace Game.UI
 
         public void LoadMembers()
         {
-            _loadingText.gameObject.SetActive(true);
+            _loadingObject.SetActive(true);
             ClearMembersContent();
 
             WWWForm form = new WWWForm();
@@ -38,7 +38,7 @@ namespace Game.UI
 
         public void CreateCards(UsersData data, WebOperationStatus status)
         {
-            _loadingText.gameObject.SetActive(false);
+            _loadingObject.SetActive(false);
             foreach (var user in data.Users)
             {
                 TeamMemberCard card = Instantiate(_cardTemplate, _cardsContent);

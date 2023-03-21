@@ -21,8 +21,8 @@ namespace Game.UI
         public void UpdateInfo(UserData data)
         {
             _icon.sprite = GameManager.AvatarsController.GetAvatar(data.Icon).Icon;
-            _nickNameText.text = data.Login;
-            GameManager.TicketsBankController.TicketsChangedEvent.AddListener(() => _ticketsText.text = "Баланс: " + NumberConverter.NumToString(GameManager.TicketsBankController.Tickets));
+            _nickNameText.text = data.Login.ToUpper();
+            GameManager.TicketsBankController.TicketsChangedEvent.AddListener(() => _ticketsText.text = "Баланс: " + NumberConverter.NumToString(GameManager.TicketsBankController.Tickets) + " б");
 
             _teamInactiveBlock.Initialize(data);
             _teamActiveBlock.Initialize(data);

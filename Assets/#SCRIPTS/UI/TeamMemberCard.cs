@@ -10,15 +10,19 @@ namespace Game.UI
     public class TeamMemberCard : MonoBehaviour
     {
         [SerializeField] private Image _icon;
+        [SerializeField] private Image _bg;
+        [SerializeField] private Image _crownIcon;
         [SerializeField] private Text _name;
         [SerializeField] private Text _balance;
         [SerializeField] private Button _kickButton;
 
-        [Header("Roles")]
-        [SerializeField] private string _adminRoleColorHEX;
-        [SerializeField] private string _memberRoleColorHEX;
 
-        private string _currentRoleColorHex;
+        [Header("Roles")]
+        [SerializeField] private Color _adminRoleBGColor;
+        [SerializeField] private Color _memberRoleBGColor;
+        [SerializeField] private Color _adminRoleNickNameColor;
+
+        private Color _currentRoleBGColor;
 
         private UserData _userData;
         private TeamData _teamData;
@@ -35,15 +39,19 @@ namespace Game.UI
 
             _icon.sprite = GameManager.AvatarsController.GetAvatar(user.Icon).Icon;
 
-            _currentRoleColorHex = _memberRoleColorHEX;
+            _currentRoleBGColor = _memberRoleBGColor;
+            _name.color = Color.white;
             if (user.PlayerData.TeamData.Role == "Admin")
             {
-                _currentRoleColorHex = _adminRoleColorHEX;
+                _currentRoleBGColor = _adminRoleBGColor;
+                _name.color = _adminRoleNickNameColor;
+                _crownIcon.gameObject.SetActive(true);
                 HideKickButton();
             }
 
-            _name.text = $"{user.Login}<color={_currentRoleColorHex}><size=50>        {user.PlayerData.TeamData.Role} </size></color>";
-            _balance.text = "Баланс: " + NumberConverter.NumToString(user.PlayerData.Tickets);
+            _bg.color = _currentRoleBGColor;
+            _name.text = user.Login.ToUpper();
+            _balance.text = "Баланс: " + NumberConverter.NumToString(user.PlayerData.Tickets) + " б";
             _kickButton.onClick.AddListener(KickPlayer);
         }
 
