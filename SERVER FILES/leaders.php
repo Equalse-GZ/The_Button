@@ -1,67 +1,96 @@
 <?php
-    define('LOGIN', 'Login');
-    define('PASSWORD', 'Password');
-    define('REG_TYPE', 'Registering');
-    define('LOG_TYPE', 'Logging');
-    define('ICON', 'Icon');
-    define('SAVE_TYPE', 'Save');
+    define('LEADERS_PERSON_TYPE', 'LeadersPerson');
+    define('LEADERS_TEAMS_TYPE', 'LeadersTeam');
+    define('LEADERS_TEAMSPLACE_TYPE', 'LeadersTeamPlace');
+    define('LEADERS_PERSONPLACE_TYPE', 'LeadersPersonPlace');
 
-    if($data['Type'] == REG_TYPE)
+    if($data['Type'] == LEADERS_PERSON_TYPE)
     {
-        $users = $db->query("SELECT * FROM `users` WHERE `login` = '{$data[LOGIN]}'");
-        if($users->num_rows == 0)
-        {
-            $hash_password = password_hash($data[PASSWORD], PASSWORD_DEFAULT);
-            $db->query("INSERT INTO `users` (`login`, `password`, `icon`) VALUES ('{$data[LOGIN]}', '{$hash_password}', '{$data[ICON]}')");
-            $db->query("INSERT INTO `players`(`userID`, `tickets`) VALUES ('{$db->insert_id}', 0)");
-            $userData["Icon"] = $data["Icon"];
-            echo json_encode($userData, JSON_UNESCAPED_UNICODE);
-        }
+        $players_rows = $db->query("SELECT * FROM `players` ORDER BY `tickets` DESC");
+        while($row = $players_rows->fetch_assoc())
+            $players[] = $row;
+
+        $k = 0;
+        if(count($players) >= 50)
+            $k = 50;
         else
-        {
-            $userData['ErrorData']['IsEmpty'] = false;
-            $userData['ErrorData']['Message'] = "Такой пользователь уже существует!";
-            echo json_encode($userData, JSON_UNESCAPED_UNICODE);;
+            $k = count($players);
+
+        for ($i=0; $i < $k; $i++) 
+        { 
+            $user = $db->query("SELECT * FROM `users` WHERE `id` = '{$players[$i]['userID']}'")->fetch_assoc();
+            if($user['login'] != "EVENT_Bank_0")
+            {
+                $userData['Icon'] = $user['icon'];
+                $userData['Login'] = $user['login'];
+                $userData['PlayerData']['Tickets'] = $players[$i]['tickets'];
+    
+                $persons_data[] = $userData; 
+            }
+        }
+
+        echo json_encode($persons_data, JSON_UNESCAPED_UNICODE);
+    }
+
+
+
+    if($data['Type'] == LEADERS_TEAMS_TYPE)
+    {
+        $teams_rows = $db->query("SELECT * FROM `teams` ORDER BY `tickets` DESC");
+        while($row = $teams_rows->fetch_assoc())
+            $teams[] = $row;
+
+        $k = 0;
+        if(count($teams) >= 25)
+            $k = 25;
+        else
+            $k = count($teams);
+
+        for ($i=0; $i < $k; $i++) 
+        { 
+            $teamData['Name'] = $teams[$i]['name'];
+            $teamData['Tickets'] = $teams[$i]['tickets'];
+            $teamData['MembersCount'] = $teams[$i]['membersCount'];
+    
+            $teams_data[] = $teamData;
+        }
+
+        echo json_encode($teams_data, JSON_UNESCAPED_UNICODE);
+    }
+
+
+
+
+    if($data['Type'] == LEADERS_TEAMSPLACE_TYPE)
+    {
+        $teams_rows = $db->query("SELECT * FROM `teams` ORDER BY `tickets` DESC");
+        while($row = $teams_rows->fetch_assoc())
+            $teams[] = $row;
+        
+        for ($i=0; $i < count($teams); $i++) { 
+            if($teams[$i]['name'] == $data['TeamName']){
+                $teamData['Place'] = $i+1;
+                echo json_encode($teamData, JSON_UNESCAPED_UNICODE);
+                exit;
+            }
         }
     }
 
-    if($data['Type'] == LOG_TYPE)
-    {
-        $users = $db->query("SELECT * FROM `users` WHERE `login` = '{$data[LOGIN]}'");
-        $user = $users->fetch_assoc();
-            
-        
-        if($users->num_rows == 0 || !password_verify($data[PASSWORD], $user['password'])){
-            $userData['ErrorData']['IsEmpty'] = false;
-            $userData['ErrorData']['Message'] = "Неверный логин или пароль!";
-            echo json_encode($userData, JSON_UNESCAPED_UNICODE);
-            exit;
-        }
-                
-        $player = $db->query("SELECT * FROM `players` WHERE `userID` = '{$user['id']}'")->fetch_assoc();
-        $teamMembers = $db->query("SELECT * FROM `teamMembers` WHERE `userID` = '{$user['id']}'");
-    
-        if($teamMembers->num_rows == 1)
-        {
-            $teamMember = $teamMembers->fetch_assoc();
-            $teams = $db->query("SELECT * FROM `teams` WHERE `id` = '{$teamMember["teamID"]}'");
-            $team = $teams->fetch_assoc();
 
-            $userData['PlayerData']['TeamData']['Name'] = $team["name"];
-            $userData['PlayerData']['TeamData']['InviteCode'] = $team["inviteCode"];
-            $userData['PlayerData']['TeamData']['Tickets'] = $team["tickets"];
-            $userData['PlayerData']['TeamData']['Role'] = $teamMember['role'];
-        }
 
-        $userData['PlayerData']['Tickets'] = $player["tickets"];
-        
-        $userData["Icon"] = $user["icon"];
-        $userData['ID'] = $user["id"];
-        echo json_encode($userData, JSON_UNESCAPED_UNICODE);
-    }
-    
-    if($data['Type'] == SAVE_TYPE)
+    if($data['Type'] == LEADERS_PERSONPLACE_TYPE)
     {
-        $db->query("UPDATE `players` SET `tickets` = '{$data["Tickets"]}' WHERE `userID` = '{$data["ID"]}'");
+        $players_rows = $db->query("SELECT * FROM `players` ORDER BY `tickets` DESC");
+        while($row = $players_rows->fetch_assoc())
+            $players[] = $row;
+
+        for ($i=0; $i < count($players); $i++) { 
+            $user = $db->query("SELECT * FROM `users` WHERE `id` = '{$players[$i]['userID']}'")->fetch_assoc();
+            if($user['login'] == $data['UserName']){
+                $userData['Place'] = $i+1;
+                echo json_encode($userData, JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+        }
     }
 ?>

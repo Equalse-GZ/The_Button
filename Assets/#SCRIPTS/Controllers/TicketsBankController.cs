@@ -48,11 +48,6 @@ namespace Game.Controllers
             Save();
         }
 
-        public void Disable()
-        {
-            TicketsChangedEvent.RemoveAllListeners();
-        }
-
         public bool IsEnoughTickets(int value)
         {
             return Tickets >= value;

@@ -7232,7 +7232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &221575313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15968,6 +15968,7 @@ GameObject:
   - component: {fileID: 552745258}
   - component: {fileID: 552745257}
   - component: {fileID: 552745256}
+  - component: {fileID: 552745259}
   m_Layer: 0
   m_Name: '[Button] Donate'
   m_TagString: Untagged
@@ -16039,7 +16040,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 552745257}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 552745259}
+        m_TargetAssemblyTypeName: Game.UI.DonationServiceButton, Assembly-CSharp
+        m_MethodName: TryDonate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &552745257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16078,6 +16091,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552745254}
   m_CullTransparentMesh: 1
+--- !u!114 &552745259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552745254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7833ddf31c3874408002aff3215a398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &553913287
 GameObject:
   m_ObjectHideFlags: 0
@@ -36303,7 +36328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1324466745
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48015,7 +48040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1894049491
 RectTransform:
   m_ObjectHideFlags: 0
