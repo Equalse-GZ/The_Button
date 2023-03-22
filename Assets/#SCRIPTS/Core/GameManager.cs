@@ -108,6 +108,7 @@ namespace Game.Core
             BonusRepositoryController.Disable();
             UserInterface.GetScreen<ProfileScreen>().Disable();
             UserInterface.Disable();
+            TicketsBankController.Disable();
             Save();
 
             _authorizationController.AuthorizationSuccessfull += Run;

@@ -1,3 +1,4 @@
+using Game.Controllers;
 using Game.Core;
 using Game.Data;
 using Game.Services;
@@ -18,11 +19,16 @@ namespace Game.UI
 
         private UserData _user;
 
+        public override void Initialize()
+        {
+            base.Initialize();
+            GameManager.TicketsBankController.TicketsChangedEvent.AddListener(() => _ticketsText.text = "Баланс: " + NumberConverter.NumToString(GameManager.TicketsBankController.Tickets) + " б");
+        }
+
         public void UpdateInfo(UserData data)
         {
             _icon.sprite = GameManager.AvatarsController.GetAvatar(data.Icon).Icon;
             _nickNameText.text = data.Login.ToUpper();
-            GameManager.TicketsBankController.TicketsChangedEvent.AddListener(() => _ticketsText.text = "Баланс: " + NumberConverter.NumToString(GameManager.TicketsBankController.Tickets) + " б");
 
             _teamInactiveBlock.Initialize(data);
             _teamActiveBlock.Initialize(data);
