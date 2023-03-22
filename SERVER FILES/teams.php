@@ -109,7 +109,7 @@
         $team = $teams->fetch_assoc();
         $db->query("INSERT INTO `teamMembers` (`teamID`, `userID`, `role`) VALUES ('{$team["id"]}', '{$data["UserID"]}', '{$data["Role"]}')");
 
-        $newMembersCount = $db->query("SELECT * FROM `teamMembers`")->num_rows;
+        $newMembersCount = $db->query("SELECT * FROM `teamMembers` WHERE `teamID` = '{$team["id"]}'")->num_rows;
         $db->query("UPDATE `teams` SET `membersCount` = '{$newMembersCount}' WHERE `inviteCode` = '{$data["InviteCode"]}'");
 
         $teamData["Name"] = $team["name"];
