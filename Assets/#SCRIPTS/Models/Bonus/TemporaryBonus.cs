@@ -10,6 +10,8 @@ namespace Game.Bonuses
     {
         [Header("Image")]
         [SerializeField] private Sprite _icon;
+        [SerializeField] private Color _cardColor;
+        [SerializeField] private TemporaryBonusType _type;
 
         [Space(15)]
         [SerializeField] private int _id;
@@ -29,6 +31,9 @@ namespace Game.Bonuses
         public float Profit => _profit;
         public int Revenue => (int)(ActionTime * _profit);
         public Sprite Icon => _icon;
+        public TemporaryBonusType Type => _type;
+        public Color CardColor => _cardColor;
+
         public int CardID = -1;
 
         private int _remainingTime;
@@ -76,5 +81,11 @@ namespace Game.Bonuses
 
             _remainingTime = ActionTime - passedTime;
         }
+    }
+
+    public enum TemporaryBonusType
+    {
+        Casual,
+        Golden
     }
 }

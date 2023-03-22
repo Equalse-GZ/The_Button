@@ -17,13 +17,13 @@ namespace Game.UI
         {
             base.Initialize();
 
-            _constantBonusesTab.gameObject.SetActive(false);
-            _temporaryBonusesTab.gameObject.SetActive(false);
+            HideTabs();
 
             _constantBonusesTab.onClick.AddListener(() =>
             {
                 GameManager.ScreensController.ShowScreen<BonusShopScreen>();
                 GameManager.UserInterface.GetScreen<BonusShopScreen>().OpenPage<ConstantBonusesPage>();
+                HideTabs();
                 PageOpenEvent?.Invoke();
             });
 
@@ -31,10 +31,17 @@ namespace Game.UI
             {
                 GameManager.ScreensController.ShowScreen<BonusShopScreen>();
                 GameManager.UserInterface.GetScreen<BonusShopScreen>().OpenPage<TemporaryBonusesPage>();
+                HideTabs();
                 PageOpenEvent?.Invoke();
             });
 
             Button.onClick.AddListener(Toggle);
+        }
+
+        private void HideTabs()
+        {
+            _constantBonusesTab.gameObject.SetActive(false);
+            _temporaryBonusesTab.gameObject.SetActive(false);
         }
 
         private void Toggle()

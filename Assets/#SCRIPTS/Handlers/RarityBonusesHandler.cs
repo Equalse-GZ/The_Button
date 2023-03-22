@@ -16,6 +16,7 @@ namespace Game.Handlers
 
         public void Initialize(List<RarityBonus> rarityBonuses)
         {
+            _message.gameObject.SetActive(true);
             _bonusRepositoryScreen = GameManager.UserInterface.GetScreen<BonusRepositoryScreen>();
             GameManager.MainButtonController.ClickEvent.AddListener(DetermineBonus);
             foreach (var bonus in rarityBonuses)

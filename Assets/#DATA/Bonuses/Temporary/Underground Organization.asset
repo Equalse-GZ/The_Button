@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Underground Organization
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 15c26b110a0196645b3313f4b92a536f, type: 3}
+  _cardColor: {r: 0.43529412, g: 0.44313726, b: 0.9137255, a: 1}
+  _type: 0
   _id: 33
   _name: "\u041F\u043E\u0434\u043F\u043E\u043B\u044C\u043D\u0430\u044F \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u044F"
   _description: 

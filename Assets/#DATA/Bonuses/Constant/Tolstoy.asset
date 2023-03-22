@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Tolstoy
   m_EditorClassIdentifier: 
   _icon: {fileID: 0}
+  _cardColor: {r: 1, g: 0.98039216, b: 0.61960787, a: 1}
   _id: 6
   _name: "\u041B.\u041D. \u0422\u043E\u043B\u0441\u0442\u043E\u0439"
   _description: "10 \u0431/\u0441\u0435\u043A"
@@ -20,3 +21,4 @@ MonoBehaviour:
   _changingType: 1
   _changingValue: 10
   CardID: -1
+  Count: 1

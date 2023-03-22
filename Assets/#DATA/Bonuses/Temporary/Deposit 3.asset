@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Deposit 3
   m_EditorClassIdentifier: 
   _icon: {fileID: 0}
+  _cardColor: {r: 0.654902, g: 0.9843137, b: 0.38431373, a: 1}
+  _type: 0
   _id: 11
   _name: "\u0412\u043A\u043B\u0430\u0434 \u043F\u043E\u0434 \u043F\u0440\u043E\u0446\u0435\u043D\u0442
     3"

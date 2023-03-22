@@ -9,13 +9,18 @@ namespace Game.UI
     {
         [SerializeField] private Text _bonusUsageText;
         [SerializeField] Button _buyButton;
-
+        [SerializeField] private Text _descriptionText;
         public void UpdateInfo(ConstantBonus bonus)
         {
             this.bonus = bonus;
             UpdateBaseInfo(bonus);
-            
-            if(bonus is ConstantReusableBonus)
+
+            _descriptionText.text = bonus.Description;
+            _descriptionText.color = new Color(bonus.CardColor.r, bonus.CardColor.g, bonus.CardColor.b, _descriptionText.color.a);
+
+            _bonusUsageText.color = new Color(bonus.CardColor.r, bonus.CardColor.g, bonus.CardColor.b, _bonusUsageText.color.a);
+
+            if (bonus is ConstantReusableBonus)
                 _bonusUsageText.text = "Многоразовые покупки";
 
             if(bonus is ConstantDisposableBonus)

@@ -11,7 +11,11 @@ namespace Game.UI
         [SerializeField] private Image _icon;
         [SerializeField] private Text _nameText;
         [SerializeField] private Text _priceText;
-        [SerializeField] private Text _descriptionText;
+
+        [Space(10)]
+        [SerializeField] private Image _headerBG;
+        [SerializeField] private Image _iconBG;
+        [SerializeField] private Image _footerBG;
 
         protected IBonus bonus;
 
@@ -21,9 +25,15 @@ namespace Game.UI
                 _icon.sprite = bonus.Icon;
 
             this.bonus = bonus;
+
+            _headerBG.color = new Color(bonus.CardColor.r, bonus.CardColor.g, bonus.CardColor.b, _headerBG.color.a);
+            _iconBG.color = new Color(bonus.CardColor.r, bonus.CardColor.g, bonus.CardColor.b, _iconBG.color.a);
+            _footerBG.color = new Color(bonus.CardColor.r, bonus.CardColor.g, bonus.CardColor.b, _footerBG.color.a);
+
+            _nameText.color = new Color(bonus.CardColor.r, bonus.CardColor.g, bonus.CardColor.b, _nameText.color.a);
             _nameText.text = bonus.Name;
-            _priceText.text = $"÷ена: <size=110>{NumberConverter.NumToString(bonus.Price)}</size>";
-            _descriptionText.text = bonus.Description;
+            _priceText.color = new Color(bonus.CardColor.r, bonus.CardColor.g, bonus.CardColor.b, _priceText.color.a);
+            _priceText.text = $"÷ена: {NumberConverter.NumToString(bonus.Price)}" + " б";
         }
 
         public void BuyBonus()

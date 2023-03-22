@@ -16,6 +16,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _icon: {fileID: 0}
+  _cardColor: {r: 1, g: 0.43867922, b: 0.43867922, a: 1}
   _id: 36
   _name: "\u0421\u043B\u043E\u043C\u0430\u043D\u043D\u0430\u044F \u043F\u0440\u043E\u0432\u043E\u0434\u043A\u0430"
   _description: 

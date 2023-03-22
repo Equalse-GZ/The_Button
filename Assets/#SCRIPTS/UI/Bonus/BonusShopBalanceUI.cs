@@ -18,7 +18,7 @@ namespace Game.UI
 
         public void UpdateInfo()
         {
-            _text.text = $"Баланс  <size=85><color=#641afa>{NumberConverter.NumToString(GameManager.TicketsBankController.Tickets)}</color> <color=#480cc5>б</color></size>";
+            _text.text = $"Баланс  <size=85><color=#9864FF>{NumberConverter.NumToString(GameManager.TicketsBankController.Tickets)}</color> <color=#480cc5>б</color></size>";
         }
     }
 }

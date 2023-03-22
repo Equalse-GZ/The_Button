@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fountain Pen
   m_EditorClassIdentifier: 
   _icon: {fileID: 0}
+  _cardColor: {r: 1, g: 0.98039216, b: 0.61960787, a: 1}
   _id: 3
   _name: "\u0410\u0432\u0442\u043E\u0440\u0443\u0447\u043A\u0430"
   _description: "1 \u0431/\u0441\u0435\u043A"
@@ -20,3 +21,4 @@ MonoBehaviour:
   _changingType: 1
   _changingValue: 1
   CardID: -1
+  Count: 1

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Working Crew
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 327f2f4f3f5728543b626d73afe05021, type: 3}
+  _cardColor: {r: 0.43529412, g: 0.44313726, b: 0.9137255, a: 1}
+  _type: 0
   _id: 35
   _name: "\u0420\u0430\u0431\u043E\u0447\u0430\u044F \u0431\u0440\u0438\u0433\u0430\u0434\u0430"
   _description: 

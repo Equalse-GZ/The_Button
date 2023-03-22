@@ -9,6 +9,7 @@ namespace Game.Bonuses
 
         [Header("Image")]
         [SerializeField] private Sprite _icon;
+        [SerializeField] private Color _cardColor;
 
         [Space(15)]
         [SerializeField] private int _id;
@@ -32,6 +33,8 @@ namespace Game.Bonuses
         public ChangingType ChangingType => _changingType;
         public int ChangingValue => _changingValue;
         public Sprite Icon => _icon;
+
+        public Color CardColor => _cardColor;
 
         public virtual void Disable() { }
     }

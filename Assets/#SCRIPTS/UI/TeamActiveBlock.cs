@@ -1,4 +1,4 @@
-using Game.Core;
+п»їusing Game.Core;
 using Game.Data;
 using Game.Services;
 using Game.Web;
@@ -39,9 +39,9 @@ namespace Game.UI
         public void AddTicketsToTeam()
         {
             _errorMessage.text = "";
-            if(GameManager.TicketsBankController.IsEnoughTickets(int.Parse(_sendTicketsInputField.text)) == false)
+            if (GameManager.TicketsBankController.IsEnoughTickets(int.Parse(_sendTicketsInputField.text)) == false)
             {
-                _errorMessage.text = "Недостаточно средств!";
+                _errorMessage.text = "ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г±Г°ГҐГ¤Г±ГІГў!";
                 return;
             }
 
@@ -69,8 +69,8 @@ namespace Game.UI
         public void UpdateTeamInfo(TeamData data)
         {
             _teamNameText.text = data.Name.ToUpper();
-            _teamBalanceText.text = "Баланс: " + NumberConverter.NumToString(data.Tickets);
-            _inviteCodeText.text = "Код приглашения: " + data.InviteCode;
+            _teamBalanceText.text = "Р‘Р°Р»Р°РЅСЃ РєРѕРјР°РЅРґС‹: " + NumberConverter.NumToString(data.Tickets);
+            _inviteCodeText.text = "РљРѕРґ РїСЂРёРіР»Р°С€РµРЅРёСЏ: " + data.InviteCode;
             _teamData = data;
             _teamMembersScreen.UpdateTeam(_userData, data);
         }

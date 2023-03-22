@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Marker
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 5c746659e5a62df4d8451168aab8bc5d, type: 3}
+  _cardColor: {r: 0.52156866, g: 0.5254902, b: 0.78431374, a: 1}
+  _type: 0
   _id: 29
   _name: "\u041C\u0430\u0440\u043A\u0435\u0440"
   _description: 

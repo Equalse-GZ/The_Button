@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Golden Marker
   m_EditorClassIdentifier: 
   _icon: {fileID: 0}
+  _cardColor: {r: 1, g: 0.98039216, b: 0.61960787, a: 1}
+  _type: 1
   _id: 23
   _name: "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 \u043C\u0430\u0440\u043A\u0435\u0440"
   _description: 

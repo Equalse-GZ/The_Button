@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Pencil
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: f58d4ab4a299ca7439058c68c5b0e7ee, type: 3}
+  _cardColor: {r: 0.52156866, g: 0.5254902, b: 0.78431374, a: 1}
+  _type: 0
   _id: 31
   _name: "\u041A\u0430\u0440\u0430\u043D\u0434\u0430\u0448"
   _description: 

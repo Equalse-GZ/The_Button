@@ -8,6 +8,8 @@ namespace Game.UI
     {
         [Header("Total")]
         [SerializeField] protected Image _icon;
+        [SerializeField] protected Image _bgIcon;
+        [SerializeField] protected Image _bg;
         [SerializeField] protected Text _nameText;
         [SerializeField] protected Text _typeText;
 
@@ -18,6 +20,15 @@ namespace Game.UI
 
         public void UpdateTotalInfo(IBonus bonus)
         {
+            if(bonus is TemporaryBonus)
+            {
+                if (((TemporaryBonus)bonus).Type == TemporaryBonusType.Golden)
+                    _bgIcon.color = bonus.CardColor;
+                else
+                    _bgIcon.color = Color.white;
+            }
+
+
             Owner = bonus;
             string type = "";
 
@@ -28,6 +39,7 @@ namespace Game.UI
             else
                 type = "Постоянный";
 
+            _bg.color = bonus.CardColor;
             _icon.sprite = bonus.Icon;
             _nameText.text = bonus.Name;
             _typeText.text = type;

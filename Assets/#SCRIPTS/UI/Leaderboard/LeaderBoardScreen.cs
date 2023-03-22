@@ -14,7 +14,7 @@ namespace Game.UI
         [SerializeField] private LeaderboardPersonCard _personCardTemplate;
         [SerializeField] private LeaderboardTeamCard _teamCardTemplate;
         [SerializeField] private Transform _content;
-        [SerializeField] private Text _loadingText;
+        [SerializeField] private GameObject _loadingObject;
 
         [Header("Place Window")]
         [SerializeField] GameObject _placeWindowGameObject;
@@ -31,7 +31,7 @@ namespace Game.UI
 
         public void LoadPersons()
         {
-            _loadingText.gameObject.SetActive(true);
+            _loadingObject.SetActive(true);
             _titleText.text = "Персональный Лидерборд";
 
             WWWForm form = new WWWForm();
@@ -49,7 +49,7 @@ namespace Game.UI
 
         public void LoadTeams()
         {
-            _loadingText.gameObject.SetActive(true);
+            _loadingObject.SetActive(true);
             _titleText.text = "Командный Лидерборд";
 
             if (GameManager.UserData.PlayerData.TeamData.Name == "")
@@ -86,7 +86,7 @@ namespace Game.UI
 
         private void CreatePersonCards(UsersData data, WebOperationStatus status)
         {
-            _loadingText.gameObject.SetActive(false);
+            _loadingObject.SetActive(false);
             int i = 1;
             foreach (var user in data.Users)
             {
@@ -102,7 +102,7 @@ namespace Game.UI
 
         private void CreateTeamCards(TeamsData data, WebOperationStatus status)
         {
-            _loadingText.gameObject.SetActive(false);
+            _loadingObject.SetActive(false);
             int i = 1;
             foreach (var team in data.Teams)
             {

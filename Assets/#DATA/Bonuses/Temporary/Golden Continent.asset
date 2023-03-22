@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Golden Continent
   m_EditorClassIdentifier: 
   _icon: {fileID: 0}
+  _cardColor: {r: 0.84313726, g: 0.6784314, b: 0.015686275, a: 1}
+  _type: 1
   _id: 17
   _name: "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 \u043A\u043E\u043D\u0442\u0438\u043D\u0435\u043D\u0442"
   _description: 
