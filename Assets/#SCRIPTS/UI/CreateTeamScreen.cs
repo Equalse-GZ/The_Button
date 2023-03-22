@@ -17,10 +17,23 @@ namespace Game.UI
         {
             _userData = userData;
             _errorMessage.text = "";
+            _teamNameInput.onValueChanged.AddListener((s) => _teamNameInput.text = s.Replace(" ", ""));
         }
 
         public void CreateTeam()
         {
+            if(_teamNameInput.text.Length < 5)
+            {
+                _errorMessage.text = "Название команды должно состоять минимум из 5 символов";
+                return;
+            }
+
+            if(_teamNameInput.text.Length > 12)
+            {
+                _errorMessage.text = "Название команды должно состоять не более чем из 12 символов";
+                return;
+            }
+
             TeamData teamData = new TeamData();
             teamData.Name = _teamNameInput.text;
 
@@ -46,7 +59,6 @@ namespace Game.UI
             }
 
             GameManager.UserInterface.GetScreen<ProfileScreen>().OnTeamConnected(data);
-            // Hide Create Team
         }
     }
 }
