@@ -107,6 +107,7 @@ namespace Game.Core
             GlobalTimer.Disable();
             BonusRepositoryController.Disable();
             UserInterface.GetScreen<ProfileScreen>().Disable();
+            UserInterface.Disable();
             Save();
 
             _authorizationController.AuthorizationSuccessfull += Run;

@@ -38,7 +38,7 @@ namespace Game.UI
             Button.onClick.AddListener(Toggle);
         }
 
-        private void HideTabs()
+        public void HideTabs()
         {
             _constantBonusesTab.gameObject.SetActive(false);
             _temporaryBonusesTab.gameObject.SetActive(false);

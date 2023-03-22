@@ -27,6 +27,15 @@ namespace Game.UI
             }
         }
 
+        public void Disable()
+        {
+            foreach (Menu menu in _menus)
+            {
+                menu.Disable();
+                _menusMap.Remove(menu.GetType());
+            }
+        }
+
         public T GetScreen<T>() where T : ScreenUI
         {
             Type type = typeof(T);

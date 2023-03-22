@@ -28,15 +28,23 @@ namespace Game.UI
             {
                 GameManager.ScreensController.ShowScreen<GamingScreen>();
                 MoveIndicator(_homeTab);
+                _bonusShopTab.HideTabs();
             });
 
             _profileTab.Button.onClick.AddListener(() =>
             {
                 GameManager.ScreensController.ShowScreen<ProfileScreen>();
                 MoveIndicator(_profileTab);
+                _bonusShopTab.HideTabs();
             });
 
             _bonusShopTab.PageOpenEvent.AddListener(() => MoveIndicator(_bonusShopTab));
+        }
+
+        public override void Disable()
+        {
+            MoveIndicator(_homeTab);
+            _bonusShopTab.HideTabs();
         }
 
         private void MoveIndicator(MainMenuTab tab)
