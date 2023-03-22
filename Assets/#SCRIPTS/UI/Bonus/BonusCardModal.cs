@@ -25,6 +25,7 @@ namespace Game.UI
                 _icon.sprite = bonus.Icon;
 
             this.bonus = bonus;
+            _icon.color = bonus.CardColor;
 
             _headerBG.color = new Color(bonus.CardColor.r, bonus.CardColor.g, bonus.CardColor.b, _headerBG.color.a);
             _iconBG.color = new Color(bonus.CardColor.r, bonus.CardColor.g, bonus.CardColor.b, _iconBG.color.a);

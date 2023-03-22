@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c266676ed063a848840dfc2b99b45ef, type: 3}
   m_Name: Deposit 2
   m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
+  _icon: {fileID: 1183253334, guid: 29da10b4984a4654b99006e9a3ccbb28, type: 3}
   _cardColor: {r: 0.654902, g: 0.9843137, b: 0.38431373, a: 1}
   _type: 0
   _id: 10

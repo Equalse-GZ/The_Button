@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e111c3f4fa56b74a99d09a47238073f, type: 3}
   m_Name: Tolstoy
   m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
+  _icon: {fileID: 403587355, guid: 29da10b4984a4654b99006e9a3ccbb28, type: 3}
   _cardColor: {r: 1, g: 0.98039216, b: 0.61960787, a: 1}
   _id: 6
   _name: "\u041B.\u041D. \u0422\u043E\u043B\u0441\u0442\u043E\u0439"

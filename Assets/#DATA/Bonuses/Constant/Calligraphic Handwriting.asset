@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7557a1e2a9c1854ca3dfc93e0e47951, type: 3}
   m_Name: Calligraphic Handwriting
   m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
+  _icon: {fileID: -1750357509, guid: 29da10b4984a4654b99006e9a3ccbb28, type: 3}
   _cardColor: {r: 0.654902, g: 0.9843137, b: 0.38431373, a: 1}
   _id: 2
   _name: "\u041A\u0430\u043B\u043B\u0438\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u0438\u0439

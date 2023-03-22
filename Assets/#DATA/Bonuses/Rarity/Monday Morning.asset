@@ -15,7 +15,7 @@ MonoBehaviour:
   WorkCompleted:
     m_PersistentCalls:
       m_Calls: []
-  _icon: {fileID: 0}
+  _icon: {fileID: 1471803212, guid: 29da10b4984a4654b99006e9a3ccbb28, type: 3}
   _cardColor: {r: 0.20000002, g: 0.41176474, b: 0.21176472, a: 1}
   _id: 45
   _name: "\u0423\u0442\u0440\u043E \u041F\u043E\u043D\u0435\u0434\u0435\u043B\u044C\u043D\u0438\u043A\u0430"

@@ -90,7 +90,6 @@ namespace Game.UI
             int i = 1;
             foreach (var user in data.Users)
             {
-                print(user.Login);
                 var card = Instantiate(_personCardTemplate, _content);
                 card.UpdateInfo(user, i);
                 _cards.Add(card);
