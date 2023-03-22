@@ -1,3 +1,4 @@
+using Game.Controllers;
 using Game.Core;
 using Game.Data;
 using Game.Services;
@@ -13,14 +14,18 @@ namespace Game.UI
         [SerializeField] private Text _titleText;
         [SerializeField] private LeaderboardPersonCard _personCardTemplate;
         [SerializeField] private LeaderboardTeamCard _teamCardTemplate;
-        [SerializeField] private Transform _content;
         [SerializeField] private GameObject _loadingObject;
+
+        [Space(10)]
+        [SerializeField] private RectTransform _content;
 
         [Header("Place Window")]
         [SerializeField] GameObject _placeWindowGameObject;
         [SerializeField] private Text _placeInfo;
 
-        private List<LeaderboardCard> _cards = new List<LeaderboardCard>();
+        [SerializeField] private List<LeaderboardCard> _cards = new List<LeaderboardCard>();
+
+        private bool _isPersonLeaderboardScreenActive;
 
         private int _playerPlace;
 
@@ -31,6 +36,11 @@ namespace Game.UI
 
         public void LoadPersons()
         {
+            _isPersonLeaderboardScreenActive = true;
+            if (_cards.Count > 0)
+                return;
+
+            SyncController.DataRecievedEvent.AddListener(OnSync);
             _loadingObject.SetActive(true);
             _titleText.text = "Ïåğñîíàëüíûé Ëèäåğáîğä";
 
@@ -39,8 +49,8 @@ namespace Game.UI
             form.AddField("UserName", GameManager.UserData.Login);
             GameManager.WebRequestSender.SendData<UserData>(GameManager.Config.DataBaseUrl, form, (data, status) =>
             {
-                _placeInfo.text = $"ÂÀØÅ ÌÅÑÒÎ: {NumberConverter.NumToString(data.Place)}\n ÁÀËÀÍÑ: {NumberConverter.NumToString(GameManager.TicketsBankController.Tickets)}";
-
+                _placeInfo.text = $"ÂÀØÅ ÌÅÑÒÎ: {NumberConverter.NumToString(data.Place)}\n ÁÀËÀÍÑ: {NumberConverter.NumToString(GameManager.TicketsBankController.Tickets)}" + " á";
+                
                 WWWForm form = new WWWForm();
                 form.AddField("Type", "LeadersPerson");
                 GameManager.WebRequestSender.GetUsersData<UserData>(GameManager.Config.DataBaseUrl, form, CreatePersonCards);
@@ -49,6 +59,11 @@ namespace Game.UI
 
         public void LoadTeams()
         {
+            _isPersonLeaderboardScreenActive = false;
+            if (_cards.Count > 0)
+                return;
+
+            SyncController.DataRecievedEvent.AddListener(OnSync);
             _loadingObject.SetActive(true);
             _titleText.text = "Êîìàíäíûé Ëèäåğáîğä";
 
@@ -68,7 +83,7 @@ namespace Game.UI
                 form.AddField("TeamName", GameManager.UserData.PlayerData.TeamData.Name);
                 GameManager.WebRequestSender.SendData<TeamData>(GameManager.Config.DataBaseUrl, form, (data, status) =>
                 {
-                    _placeInfo.text = $"ÂÀØÅ ÊÎÌÀÍÄÍÎÅ ÌÅÑÒÎ: {NumberConverter.NumToString(data.Place)}\n ÁÀËÀÍÑ ÊÎÌÀÍÄÛ: {NumberConverter.NumToString(GameManager.UserData.PlayerData.TeamData.Tickets)}";
+                    _placeInfo.text = $"ÂÀØÅ ÊÎÌÀÍÄÍÎÅ ÌÅÑÒÎ: {NumberConverter.NumToString(data.Place)}\n ÁÀËÀÍÑ ÊÎÌÀÍÄÛ: {NumberConverter.NumToString(GameManager.UserData.PlayerData.TeamData.Tickets)}" + " á";
 
                     WWWForm form = new WWWForm();
                     form.AddField("Type", "LeadersTeam");
@@ -80,12 +95,42 @@ namespace Game.UI
         public override void Hide()
         {
             base.Hide();
-            ClearCards();
+
+            SyncController.DataRecievedEvent.RemoveListener(OnSync);
+            ClearCardsAll();
             _placeWindowGameObject.SetActive(false);
+        }
+
+        private void OnSync(GlobalData data)
+        {
+            ClearCardsAll();
+
+            if (_isPersonLeaderboardScreenActive == true)
+            {
+                _placeInfo.text = $"ÂÀØÅ ÌÅÑÒÎ: {NumberConverter.NumToString(data.UserPlace)}\n ÁÀËÀÍÑ: {NumberConverter.NumToString(GameManager.TicketsBankController.Tickets)}" + " á";
+                UsersData usersData = new UsersData();
+                usersData.Users = data.PersonLeaders;
+                CreatePersonCards(usersData, WebOperationStatus.Succesfull);
+            }
+
+            else
+            {
+                if (data.User.PlayerData.TeamData.Name == "")
+                    _placeInfo.text = "ÂÛ ÍÅ ÑÎÑÒÎÈÒÅ Â ÊÎÌÀÍÄÅ";
+                else
+                    _placeInfo.text = $"ÂÀØÅ ÊÎÌÀÍÄÍÎÅ ÌÅÑÒÎ: {NumberConverter.NumToString(data.TeamPlace)}\n ÁÀËÀÍÑ ÊÎÌÀÍÄÛ: {NumberConverter.NumToString(GameManager.UserData.PlayerData.TeamData.Tickets)}" + " á";
+
+                TeamsData teamsData = new TeamsData();
+                teamsData.Teams = data.TeamLeaders;
+                CreateTeamCards(teamsData, WebOperationStatus.Succesfull);
+            }
+
+
         }
 
         private void CreatePersonCards(UsersData data, WebOperationStatus status)
         {
+            ClearCardsAll();
             _loadingObject.SetActive(false);
             int i = 1;
             foreach (var user in data.Users)
@@ -93,6 +138,7 @@ namespace Game.UI
                 var card = Instantiate(_personCardTemplate, _content);
                 card.UpdateInfo(user, i);
                 _cards.Add(card);
+
                 i++;
             }
 
@@ -101,6 +147,7 @@ namespace Game.UI
 
         private void CreateTeamCards(TeamsData data, WebOperationStatus status)
         {
+            ClearCardsAll();
             _loadingObject.SetActive(false);
             int i = 1;
             foreach (var team in data.Teams)
@@ -114,7 +161,7 @@ namespace Game.UI
             _placeWindowGameObject.SetActive(true);
         }
 
-        private void ClearCards()
+        private void ClearCardsAll()
         {
             foreach (LeaderboardCard card in _cards)
                 Destroy(card.gameObject);

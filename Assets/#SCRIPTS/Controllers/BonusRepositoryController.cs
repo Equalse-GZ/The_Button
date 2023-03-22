@@ -30,6 +30,7 @@ namespace Game.Controllers
         {
             _dataBaseURL = dataBaseURL;
             _rarityBonusesHandler.Initialize(_stockRarityBonuses);
+            //SyncController.DataRecievedEvent.AddListener(OnSync);
             LoadBonusesFromServer();
         }
 
@@ -82,6 +83,14 @@ namespace Game.Controllers
 
             GameManager.UserInterface.GetScreen<BonusRepositoryScreen>().Disable();
         }
+
+        /*private void OnSync(GlobalData data)
+        {
+            Disable();
+            BonusesData bonusesData = new BonusesData();
+            bonusesData.Bonuses = data.Bonuses;
+            InitializeBonuses(bonusesData, WebOperationStatus.Succesfull);
+        }*/
 
         private void LoadBonusesFromServer()
         {

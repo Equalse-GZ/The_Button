@@ -21,6 +21,7 @@ namespace Game.Core
         [SerializeField] private TicketsBankController _ticketsBankController;
         [SerializeField] private ScreensController _screensController;
         [SerializeField] private BonusRepositoryController _bonusRepositoryController;
+        [SerializeField] private SyncController _syncController;
 
         [Header("User Interface")]
         [SerializeField] private UserInterface _userInterface;
@@ -32,6 +33,7 @@ namespace Game.Core
         public static TicketsBankController TicketsBankController { get; private set; }
         public static ScreensController ScreensController { get; private set; }
         public static BonusRepositoryController BonusRepositoryController { get; private set; }
+        public static SyncController SyncController { get; private set; }
         public static GameConfig Config { get; private set; }
 
         public static UserInterface UserInterface { get; private set; }
@@ -49,15 +51,6 @@ namespace Game.Core
             Initialize();
         }
 
-        private void Update()
-        {
-        }
-
-        private void OnApplicationQuit()
-        {
-            Save();
-        }
-
         public void Initialize() 
         {
             Application.targetFrameRate = 120;
@@ -65,7 +58,7 @@ namespace Game.Core
             Config = _config;
             WebRequestSender = _webRequestSender;
 
-            _ticketsBankController.Initialize(0, _userID);
+            _ticketsBankController.Initialize();
             TicketsBankController = _ticketsBankController;
 
             _userInterface.Initialize();
@@ -82,7 +75,11 @@ namespace Game.Core
         {
             UserData = userData;
             _userID = userData.ID;
-            TicketsBankController.Initialize(userData.PlayerData.Tickets, _userID);
+
+            _syncController.Initialize(userData);
+            SyncController = _syncController;
+
+            TicketsBankController.UpdateTickets(userData.PlayerData.Tickets);
 
             _mainButtonController.Initialize();
             MainButtonController = _mainButtonController;
@@ -108,19 +105,23 @@ namespace Game.Core
             BonusRepositoryController.Disable();
             UserInterface.GetScreen<ProfileScreen>().Disable();
             UserInterface.Disable();
+            SyncController.Disable();
+            TicketsBankController.Save();
             Save();
 
             _authorizationController.AuthorizationSuccessfull += Run;
         }
 
-        public void Save() 
+        public void Save()
         {
             WWWForm form = new WWWForm();
             form.AddField("Type", "Save");
             form.AddField("ID", _userID);
             form.AddField("Tickets", TicketsBankController.Tickets);
 
-            _webRequestSender.SendData<UserData>(_config.DataBaseUrl, form, null);
+            print(_userID);
+
+            GameManager.WebRequestSender.SendData<UserData>(GameManager.Config.DataBaseUrl, form, null);
         }
     }
 }

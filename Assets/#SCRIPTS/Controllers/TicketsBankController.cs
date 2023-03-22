@@ -13,14 +13,23 @@ namespace Game.Controllers
         [SerializeField] private TicketsBankUI _ui;
 
         public int Tickets { get; private set; }
-        private int _userID;
 
-        public void Initialize(int loadedTickets, int userID)
+        public void Initialize()
         {
-            Tickets = loadedTickets;
-            _userID = userID;
+            UpdateTickets(0);
+            SyncController.DataRecievedEvent.AddListener(OnSync);
+        }
+
+        public void UpdateTickets(int tickets)
+        {
+            Tickets = tickets;
             _ui.UpdateInfo(Tickets);
             TicketsChangedEvent.Invoke();
+        }
+
+        public void OnSync(GlobalData data)
+        {
+            UpdateTickets(data.User.PlayerData.Tickets);
         }
 
         public void AddTickets(int value, object sender)
@@ -57,7 +66,7 @@ namespace Game.Controllers
         {
             WWWForm form = new WWWForm();
             form.AddField("Type", "Save");
-            form.AddField("ID", _userID);
+            form.AddField("ID", GameManager.UserData.ID);
             form.AddField("Tickets", Tickets);
 
             GameManager.WebRequestSender.SendData<UserData>(GameManager.Config.DataBaseUrl, form, null);

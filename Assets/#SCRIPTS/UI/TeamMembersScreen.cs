@@ -1,3 +1,4 @@
+using Game.Controllers;
 using Game.Core;
 using Game.Data;
 using Game.Web;
@@ -26,6 +27,10 @@ namespace Game.UI
 
         public void LoadMembers()
         {
+            if (_memberCards.Count > 0)
+                return;
+
+            SyncController.DataRecievedEvent.AddListener(OnSync);
             _loadingObject.SetActive(true);
             ClearMembersContent();
 
@@ -49,6 +54,20 @@ namespace Game.UI
 
                 _memberCards.Add(card);
             }
+        }
+
+        public void Hide()
+        {
+            SyncController.DataRecievedEvent.RemoveListener(OnSync);
+            this.gameObject.SetActive(false);
+        }
+
+        private void OnSync(GlobalData data)
+        {
+            ClearMembersContent();
+            UsersData usersData = new UsersData();
+            usersData.Users = data.TeamMembers;
+            CreateCards(usersData, WebOperationStatus.Succesfull);
         }
 
         private void ClearMembersContent()

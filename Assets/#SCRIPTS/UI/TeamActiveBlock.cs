@@ -1,4 +1,5 @@
-﻿using Game.Core;
+﻿using Game.Controllers;
+using Game.Core;
 using Game.Data;
 using Game.Services;
 using Game.Web;
@@ -34,6 +35,12 @@ namespace Game.UI
             _leaveButton.onClick.AddListener(() => GameManager.UserInterface.GetScreen<ProfileScreen>().LeaveFromTeam(user, _teamData));
             _errorMessage.text = "";
             _userData = user;
+            SyncController.DataRecievedEvent.AddListener(OnSync);
+        }
+
+        public void OnSync(GlobalData data)
+        {
+            UpdateTeamInfo(data.User.PlayerData.TeamData);
         }
 
         public void AddTicketsToTeam()
@@ -41,7 +48,7 @@ namespace Game.UI
             _errorMessage.text = "";
             if (GameManager.TicketsBankController.IsEnoughTickets(int.Parse(_sendTicketsInputField.text)) == false)
             {
-                _errorMessage.text = "Íåäîñòàòî÷íî ñðåäñòâ!";
+                _errorMessage.text = "Не хватает средств!";
                 return;
             }
 

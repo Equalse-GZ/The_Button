@@ -36,4 +36,14 @@
         "PlayerData"=>$playerData,
         "Place"=>1
     );
+
+    $globalData = array(
+        "User"=>$userData,
+        "TeamLeaders"=>"Null",
+        "PersonLeaders"=>"Null",
+        "Bonuses"=>"Null",
+        "TeamMembers"=>"Null",
+        "UserPlace"=>0,
+        "TeamPlace"=>0
+    );
 ?>
