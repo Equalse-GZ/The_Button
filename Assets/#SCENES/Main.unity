@@ -483,6 +483,8 @@ GameObject:
   - component: {fileID: 26048178}
   - component: {fileID: 26048177}
   - component: {fileID: 26048176}
+  - component: {fileID: 26048180}
+  - component: {fileID: 26048179}
   m_Layer: 0
   m_Name: '[Input Field] Password'
   m_TagString: Untagged
@@ -618,6 +620,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26048174}
   m_CullTransparentMesh: 1
+--- !u!114 &26048179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26048174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6be847e9985a1c4998308df70a7335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &26048180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26048174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3048729834898846a65439c4bc530c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sizeAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 1.03
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: 0.99
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _duration: 0.8
 --- !u!1 &26679535
 GameObject:
   m_ObjectHideFlags: 0
@@ -3982,6 +4051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 137853908}
   - component: {fileID: 137853909}
+  - component: {fileID: 137853910}
   m_Layer: 0
   m_Name: '[Menu] Avatar Selection'
   m_TagString: Untagged
@@ -4025,6 +4095,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unselectedAvatarObject: {fileID: 2081831457}
   _icon: {fileID: 1612826554}
+--- !u!114 &137853910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137853907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3048729834898846a65439c4bc530c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sizeAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 1.03
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: 0.99
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _duration: 0.6
 --- !u!1 &140546944
 GameObject:
   m_ObjectHideFlags: 0
@@ -7100,13 +7225,14 @@ GameObject:
   m_Component:
   - component: {fileID: 221575313}
   - component: {fileID: 221575314}
+  - component: {fileID: 221575315}
   m_Layer: 0
   m_Name: '[Login Screen]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &221575313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7149,6 +7275,26 @@ MonoBehaviour:
   _loginInput: {fileID: 910478335}
   _passwordInput: {fileID: 26048176}
   _message: {fileID: 728467809}
+--- !u!95 &221575315
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221575312}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 10d9e7106bd399f40a245849ba45219f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &225045013
 GameObject:
   m_ObjectHideFlags: 0
@@ -7703,6 +7849,8 @@ GameObject:
   - component: {fileID: 241083441}
   - component: {fileID: 241083440}
   - component: {fileID: 241083439}
+  - component: {fileID: 241083443}
+  - component: {fileID: 241083442}
   m_Layer: 0
   m_Name: '[Input Field] Password 2'
   m_TagString: Untagged
@@ -7838,6 +7986,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241083437}
   m_CullTransparentMesh: 1
+--- !u!114 &241083442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241083437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6be847e9985a1c4998308df70a7335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &241083443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241083437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3048729834898846a65439c4bc530c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sizeAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 1.03
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: 0.99
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _duration: 1
 --- !u!1 &243636945
 GameObject:
   m_ObjectHideFlags: 0
@@ -8536,6 +8751,7 @@ GameObject:
   - component: {fileID: 282642579}
   - component: {fileID: 282642578}
   - component: {fileID: 282642577}
+  - component: {fileID: 282642580}
   m_Layer: 0
   m_Name: '[Button] Choose Avatar'
   m_TagString: Untagged
@@ -8583,7 +8799,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -8658,6 +8874,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282642575}
   m_CullTransparentMesh: 1
+--- !u!95 &282642580
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282642575}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eb610af3230431d4e833cd3d657c01a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &290569230
 GameObject:
   m_ObjectHideFlags: 0
@@ -8927,6 +9163,8 @@ GameObject:
   - component: {fileID: 301939917}
   - component: {fileID: 301939916}
   - component: {fileID: 301939915}
+  - component: {fileID: 301939919}
+  - component: {fileID: 301939918}
   m_Layer: 0
   m_Name: '[Input Field] Login'
   m_TagString: Untagged
@@ -9062,6 +9300,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301939913}
   m_CullTransparentMesh: 1
+--- !u!114 &301939918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301939913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6be847e9985a1c4998308df70a7335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &301939919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301939913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3048729834898846a65439c4bc530c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sizeAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 1.03
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: 0.99
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _duration: 0.6
 --- !u!1 &302410225
 GameObject:
   m_ObjectHideFlags: 0
@@ -12709,8 +13014,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -602}
-  m_SizeDelta: {x: 994.4, y: 114.3839}
+  m_AnchoredPosition: {x: 0.000061035, y: -602}
+  m_SizeDelta: {x: 1440, y: 114.3839}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &437353742
 MonoBehaviour:
@@ -25470,6 +25775,8 @@ GameObject:
   - component: {fileID: 910478337}
   - component: {fileID: 910478336}
   - component: {fileID: 910478335}
+  - component: {fileID: 910478339}
+  - component: {fileID: 910478338}
   m_Layer: 0
   m_Name: '[Input Field] Login'
   m_TagString: Untagged
@@ -25486,7 +25793,7 @@ RectTransform:
   m_GameObject: {fileID: 910478333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1931638147}
@@ -25605,6 +25912,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910478333}
   m_CullTransparentMesh: 1
+--- !u!114 &910478338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910478333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6be847e9985a1c4998308df70a7335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &910478339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910478333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3048729834898846a65439c4bc530c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sizeAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 1.03
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: 0.99
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _duration: 0.5
 --- !u!1 &914504147
 GameObject:
   m_ObjectHideFlags: 0
@@ -35922,13 +36296,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1324466745}
   - component: {fileID: 1324466746}
+  - component: {fileID: 1324466747}
   m_Layer: 0
   m_Name: '[Registration Screen]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1324466745
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35975,6 +36350,43 @@ MonoBehaviour:
   _password1Input: {fileID: 2107405418}
   _password2Input: {fileID: 241083439}
   _avatarsSelectionMenu: {fileID: 137853909}
+  _weekPasswords:
+  - 1234567890
+  - 123456789
+  - 0987654321
+  - 987654321
+  - 12345678
+  - 87654321
+  - qwertyuio
+  - QWERTYUIO
+  - qazxswed
+  - QAZXSWED
+  - QAZWSXED
+  - qazwsxed
+  - 12345qwerty
+  - 12345QWERTY
+  - password
+  - PASSWORD
+--- !u!95 &1324466747
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324466744}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c98d8967fea24843b36cbc8adea310e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1326612635
 GameObject:
   m_ObjectHideFlags: 0
@@ -43364,6 +43776,7 @@ GameObject:
   - component: {fileID: 1657367317}
   - component: {fileID: 1657367316}
   - component: {fileID: 1657367315}
+  - component: {fileID: 1657367318}
   m_Layer: 0
   m_Name: '[Button] Login'
   m_TagString: Untagged
@@ -43411,7 +43824,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -43486,6 +43899,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657367313}
   m_CullTransparentMesh: 1
+--- !u!95 &1657367318
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657367313}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a04e857e57ae43b47b3638a4e5afcc75, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1660444753
 GameObject:
   m_ObjectHideFlags: 0
@@ -49484,6 +49917,7 @@ GameObject:
   - component: {fileID: 1970489275}
   - component: {fileID: 1970489274}
   - component: {fileID: 1970489273}
+  - component: {fileID: 1970489276}
   m_Layer: 0
   m_Name: '[Button] Register'
   m_TagString: Untagged
@@ -49531,7 +49965,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -49606,6 +50040,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970489271}
   m_CullTransparentMesh: 1
+--- !u!95 &1970489276
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970489271}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eb610af3230431d4e833cd3d657c01a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1971814748
 GameObject:
   m_ObjectHideFlags: 0
@@ -52822,6 +53276,8 @@ GameObject:
   - component: {fileID: 2107405420}
   - component: {fileID: 2107405419}
   - component: {fileID: 2107405418}
+  - component: {fileID: 2107405422}
+  - component: {fileID: 2107405421}
   m_Layer: 0
   m_Name: '[Input Field] Password 1'
   m_TagString: Untagged
@@ -52957,6 +53413,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107405416}
   m_CullTransparentMesh: 1
+--- !u!114 &2107405421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107405416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6be847e9985a1c4998308df70a7335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2107405422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107405416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3048729834898846a65439c4bc530c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sizeAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 1.03
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: 0.99
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _duration: 0.8
 --- !u!1 &2107804410
 GameObject:
   m_ObjectHideFlags: 0

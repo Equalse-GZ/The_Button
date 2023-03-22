@@ -1,6 +1,7 @@
 using Game.Auth;
 using Game.Data;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,9 +27,12 @@ namespace Game.UI
 
         public void TryLogin()
         {
-            if (CheckInputsAreEmpty() == true)
+            if (CheckInputsAreEmpty(out List<AuthorizationInputField> inputs) == true)
             {
                 UpdateMessage("Не все поля заполнены!");
+                foreach (var input in inputs)
+                    input.PlayPulseAnimation();
+
                 return;
             }
 
@@ -54,7 +58,18 @@ namespace Game.UI
             _message.text = message;
         }
 
-        private bool CheckInputsAreEmpty() => _loginInput.text == "" || _passwordInput.text == "";
+        private bool CheckInputsAreEmpty(out List<AuthorizationInputField> inputs)
+        {
+            inputs = new List<AuthorizationInputField>();
+
+            if(_loginInput.text == "")
+                inputs.Add(_loginInput.GetComponent<AuthorizationInputField>());
+
+            if(_passwordInput.text == "")
+                inputs.Add(_passwordInput.GetComponent<AuthorizationInputField>());
+
+            return inputs.Count != 0;
+        }
     }
 }
 

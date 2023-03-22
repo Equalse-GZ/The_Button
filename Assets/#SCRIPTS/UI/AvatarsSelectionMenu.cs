@@ -1,8 +1,10 @@
+using Game.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.UI
 {
+    [RequireComponent(typeof(SinglePulseAnimation))]
     public class AvatarsSelectionMenu : MonoBehaviour
     {
         [SerializeField] private GameObject _unselectedAvatarObject;
@@ -32,6 +34,8 @@ namespace Game.UI
             _icon.gameObject.SetActive(false);
             _unselectedAvatarObject.SetActive(true);
         }
+
+        public void PlayPulseAnimation() => GetComponent<SinglePulseAnimation>().Play();
 
         public Game.Avatars.Avatar GetSelectedAvatar() => _selectedAvatar;
         public bool AvatarIsSelected() => _selectedAvatar != null;
