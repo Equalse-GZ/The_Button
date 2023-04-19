@@ -12,7 +12,7 @@ namespace Game.Controllers
         public UnityEvent TicketsChangedEvent = new UnityEvent();
         [SerializeField] private TicketsBankUI _ui;
 
-        public int Tickets { get; private set; }
+        public long Tickets { get; private set; }
 
         public void Initialize()
         {
@@ -20,7 +20,7 @@ namespace Game.Controllers
             SyncController.DataRecievedEvent.AddListener(OnSync);
         }
 
-        public void UpdateTickets(int tickets)
+        public void UpdateTickets(long tickets)
         {
             Tickets = tickets;
             _ui.UpdateInfo(Tickets);
@@ -32,7 +32,7 @@ namespace Game.Controllers
             UpdateTickets(data.User.PlayerData.Tickets);
         }
 
-        public void AddTickets(int value, object sender)
+        public void AddTickets(long value, object sender)
         {
             if (value < 0)
                 throw new System.Exception("Value must be positive");
@@ -43,7 +43,7 @@ namespace Game.Controllers
             Save();
         }
 
-        public void SpendTickets(int value, object spender)
+        public void SpendTickets(long value, object spender)
         {
             if (value < 0)
                 throw new System.Exception("Value must be positive");
@@ -57,7 +57,7 @@ namespace Game.Controllers
             Save();
         }
 
-        public bool IsEnoughTickets(int value)
+        public bool IsEnoughTickets(long value)
         {
             return Tickets >= value;
         }
@@ -67,7 +67,7 @@ namespace Game.Controllers
             WWWForm form = new WWWForm();
             form.AddField("Type", "Save");
             form.AddField("ID", GameManager.UserData.ID);
-            form.AddField("Tickets", Tickets);
+            form.AddField("Tickets", Tickets.ToString());
 
             GameManager.WebRequestSender.SendData<UserData>(GameManager.Config.DataBaseUrl, form, null);
         }

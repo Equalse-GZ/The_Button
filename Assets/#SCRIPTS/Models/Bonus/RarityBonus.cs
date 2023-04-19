@@ -15,11 +15,11 @@ namespace Game.Bonuses
         [SerializeField] private int _id;
         [SerializeField] private string _name;
         [SerializeField] private string _description;
-        [SerializeField] private int _price;
+        [SerializeField] private uint _price;
 
         [Space(15)]
         [SerializeField] private ChangingType _changingType;
-        [SerializeField] private int _changingValue;
+        [SerializeField] private long _changingValue;
 
         [Space(15)]
         [SerializeField] private float _occurenceChance;
@@ -28,10 +28,10 @@ namespace Game.Bonuses
         public float OccurrenceChance => _occurenceChance;
         public int ID => _id;
         public string Name => _name;
-        public int Price => _price;
+        public uint Price => _price;
         public string Description => _description;
         public ChangingType ChangingType => _changingType;
-        public int ChangingValue => _changingValue;
+        public long ChangingValue => _changingValue;
         public Sprite Icon => _icon;
 
         public Color CardColor => _cardColor;

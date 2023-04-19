@@ -4,6 +4,6 @@ namespace Game.Data
     public class PlayerData
     {
         public TeamData TeamData;
-        public int Tickets;
+        public long Tickets;
     }
 }

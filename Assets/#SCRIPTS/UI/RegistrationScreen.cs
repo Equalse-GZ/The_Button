@@ -16,6 +16,7 @@ namespace Game.UI
 
         [Space(15)]
         [SerializeField] private AvatarsSelectionMenu _avatarsSelectionMenu;
+        [SerializeField] private GameObject _loadingObject;
 
         [Space(10)]
         [SerializeField] private List<string> _weekPasswords = new List<string>();
@@ -26,6 +27,7 @@ namespace Game.UI
         {
             _authorizationController = authorizationController;
             _message.text = "";
+            _loadingObject.SetActive(false);
 
             _loginInput.onValueChanged.AddListener((str) => _loginInput.text = str.Replace(" ", ""));
             _password1Input.onValueChanged.AddListener((str) => _password1Input.text = str.Replace(" ", ""));
@@ -96,7 +98,8 @@ namespace Game.UI
             _loginInput.text = "";
             _password1Input.text = "";
             _password2Input.text = "";
-            
+
+            _loadingObject.SetActive(true);
             _authorizationController.Register(userData);
         }
 
@@ -107,11 +110,13 @@ namespace Game.UI
             _password2Input.text = "";
             _message.text = "";
             _avatarsSelectionMenu.ResetSelectedAvatar();
+            _loadingObject.SetActive(false);
         }
 
         public void UpdateMessage(string message)
         {
             _message.text = message;
+            _loadingObject.SetActive(false);
         }
 
         private bool CheckPasswordsEqual() => _password1Input.text == _password2Input.text;
@@ -150,7 +155,7 @@ namespace Game.UI
         {
             message = "";
 
-            if (_password1Input.text.Length < 5)
+            if (_password1Input.text.Length < 8)
             {
                 message = "Минимальная длина пароля - 8 символов";
                 return false;

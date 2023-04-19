@@ -9,7 +9,7 @@ namespace Game.Bonuses
         public int ID { get; }
         public string Name { get; }
         public string Description { get; }
-        public int Price { get; }
+        public uint Price { get; }
     }
 
     public enum ChangingType

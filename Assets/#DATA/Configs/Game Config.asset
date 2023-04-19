@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef1166a808119fd46af6b0bb8b35d516, type: 3}
   m_Name: Game Config
   m_EditorClassIdentifier: 
-  _dataBaseUrl: http://equals36.beget.tech
+  _dataBaseUrl: http://nicktocn.beget.tech

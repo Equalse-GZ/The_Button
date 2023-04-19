@@ -17,7 +17,7 @@ namespace Game.Bonuses
         [SerializeField] private int _id;
         [SerializeField] private string _name;
         [SerializeField] private string _description;
-        [SerializeField] private int _price;
+        [SerializeField] private uint _price;
 
         [Space(15)]
         [SerializeField] private int _actionTime;
@@ -25,11 +25,11 @@ namespace Game.Bonuses
 
         public int ID => _id;
         public string Name => _name;
-        public int Price => _price;
+        public uint Price => _price;
         public string Description => _description;
         public int ActionTime => _actionTime;
         public float Profit => _profit;
-        public int Revenue => (int)(ActionTime * _profit);
+        public uint Revenue => (uint)(ActionTime * _profit);
         public Sprite Icon => _icon;
         public TemporaryBonusType Type => _type;
         public Color CardColor => _cardColor;

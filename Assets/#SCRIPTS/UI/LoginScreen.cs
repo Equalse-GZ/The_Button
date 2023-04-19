@@ -12,6 +12,7 @@ namespace Game.UI
         [SerializeField] private InputField _loginInput;
         [SerializeField] private InputField _passwordInput;
         [SerializeField] private Text _message;
+        [SerializeField] private GameObject _loadingObject;
 
         private AuthorizationController _authorizationController;
 
@@ -20,6 +21,7 @@ namespace Game.UI
             _authorizationController = authorizationController;
 
             _message.text = "";
+            _loadingObject.SetActive(false);
 
             _loginInput.onValueChanged.AddListener((str) => _loginInput.text = str.Replace(" ", ""));
             _passwordInput.onValueChanged.AddListener((str) => _passwordInput.text = str.Replace(" ", ""));
@@ -43,6 +45,7 @@ namespace Game.UI
             _loginInput.text = "";
             _passwordInput.text = "";
 
+            _loadingObject.SetActive(true);
             _authorizationController.Login(userData);
         }
 
@@ -51,11 +54,13 @@ namespace Game.UI
             _loginInput.text = "";
             _passwordInput.text = "";
             _message.text = "";
+            _loadingObject.SetActive(false);
         }
 
         public void UpdateMessage(string message)
         {
             _message.text = message;
+            _loadingObject.SetActive(false);
         }
 
         private bool CheckInputsAreEmpty(out List<AuthorizationInputField> inputs)

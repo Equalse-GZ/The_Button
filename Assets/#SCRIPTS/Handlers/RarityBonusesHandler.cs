@@ -9,7 +9,7 @@ namespace Game.Handlers
     {
         [SerializeField] private RarityBonusMessage _message;
 
-        private List<RarityBonus> _bonuses = new List<RarityBonus>();
+        [SerializeField] private List<RarityBonus> _bonuses = new List<RarityBonus>();
         private BonusRepositoryScreen _bonusRepositoryScreen;
 
         [SerializeField] private bool _bonusIsWorking = false;
@@ -36,16 +36,38 @@ namespace Game.Handlers
                 return;
 
             float chance = Random.Range(0f, 3f);
-            MixArray();
+            List<float> occurrenceChances = new List<float>();
 
             foreach (var bonus in _bonuses)
             {
                 if(chance < bonus.OccurrenceChance)
-                {
-                    UseBonus(bonus);
-                    break;
-                }
+                    occurrenceChances.Add(bonus.OccurrenceChance);
             }
+
+            if (occurrenceChances.Count == 0) return;
+
+            occurrenceChances.Sort();
+            float minOccurrenceChance = occurrenceChances[0];
+
+            List<RarityBonus> luckyBonuses = new List<RarityBonus>();
+            foreach (var bonus in _bonuses)
+            {
+                if(bonus.OccurrenceChance == minOccurrenceChance)
+                    luckyBonuses.Add(bonus);
+            }
+            
+
+            if (luckyBonuses.Count == 0) return;
+            if (luckyBonuses.Count == 1) UseBonus(luckyBonuses[0]);
+
+            else
+            {
+                int luckyBonusNumber = Random.Range(0, luckyBonuses.Count);
+                UseBonus(luckyBonuses[luckyBonusNumber]);
+            }
+
+            occurrenceChances.Clear();
+            luckyBonuses.Clear();
         }
 
         private void UseBonus(RarityBonus bonus)
@@ -102,18 +124,6 @@ namespace Game.Handlers
         private void OnTimeIsOut(RarityTemporaryBonus bonus)
         {
             _bonusRepositoryScreen.DeleteCard(bonus.CardID);
-        }
-
-        private void MixArray()
-        {
-            var random = new System.Random();
-            for (int i = _bonuses.Count - 1; i >= 1; i--)
-            {
-                int j = random.Next(i + 1);
-                var temp = _bonuses[j];
-                _bonuses[j] = _bonuses[i];
-                _bonuses[i] = temp;
-            }
         }
     }
 }

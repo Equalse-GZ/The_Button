@@ -8,7 +8,7 @@ namespace Game.UI
     {
         [SerializeField] private Text _ticketsAmount;
 
-        public void UpdateInfo(int tickets)
+        public void UpdateInfo(long tickets)
         {
             _ticketsAmount.text = NumberConverter.NumToString(tickets);
         }

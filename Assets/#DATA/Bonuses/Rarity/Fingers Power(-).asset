@@ -23,5 +23,5 @@ MonoBehaviour:
   _price: 0
   _changingType: 0
   _changingValue: 1
-  _occurenceChance: 0.005
+  _occurenceChance: 1
   CardID: -1

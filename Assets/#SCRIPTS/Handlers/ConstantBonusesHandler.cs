@@ -9,7 +9,7 @@ namespace Game.Handlers
     public class ConstantBonusesHandler : MonoBehaviour
     {
         [SerializeField] private List<ConstantReusableBonus> _reusableBonuses = new List<ConstantReusableBonus>();
-        private List<ConstantDisposableBonus> _disposableBonuses = new List<ConstantDisposableBonus>();
+        [SerializeField] private List<ConstantDisposableBonus> _disposableBonuses = new List<ConstantDisposableBonus>();
 
         private BonusRepositoryScreen _bonusRepositoryScreen;
 

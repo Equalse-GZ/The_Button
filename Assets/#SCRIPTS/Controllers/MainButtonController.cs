@@ -11,21 +11,21 @@ namespace Game.Controllers
     {
         public UnityEvent ClickEvent = new UnityEvent();
         [SerializeField] private MainButtonUI _ui;
-        [SerializeField] private int _addedTickets;
+        [SerializeField] private long _addedTickets;
 
-        private Dictionary<ChangingType, int> _additionalTickets = new Dictionary<ChangingType, int>();
+        private Dictionary<ChangingType, long> _additionalTickets = new Dictionary<ChangingType, long>();
 
         public void Initialize()
         {
             _additionalTickets[ChangingType.Multiply] = 0;
-            _additionalTickets[ChangingType.Plus] = 0;
+            _additionalTickets[ChangingType.Plus] = 1;
 
             _addedTickets = 1;
             _ui.Initialize();
             _ui.ClickEvent += OnClick;
         }
 
-        public void IncreaseAdditionalTickets(ChangingType changingType, int value)
+        public void IncreaseAdditionalTickets(ChangingType changingType, long value)
         {
             if (_additionalTickets.ContainsKey(changingType) == false)
                 return;
@@ -34,7 +34,7 @@ namespace Game.Controllers
             ChangeAdditionalTickets();
         }
 
-        public void DecreaseAddedTickets(ChangingType changingType, int value)
+        public void DecreaseAddedTickets(ChangingType changingType, long value)
         {
             if (changingType == ChangingType.Minus)
                 _additionalTickets[ChangingType.Plus] = _additionalTickets.GetValueOrDefault(ChangingType.Plus) - value;
@@ -55,14 +55,15 @@ namespace Game.Controllers
 
         private void ChangeAdditionalTickets()
         {
-            _addedTickets = 1 + _additionalTickets[ChangingType.Plus];
+            print(_additionalTickets[ChangingType.Plus]);
+            _addedTickets = _additionalTickets[ChangingType.Plus];
             _addedTickets *= _additionalTickets[ChangingType.Multiply];
         }
 
         private void OnClick()
         {
             GameManager.TicketsBankController.AddTickets(_addedTickets, this);
-            //_ui.ThrowMessage(50000);
+            _ui.ThrowMessage(_addedTickets);
             ClickEvent.Invoke();
         }
 

@@ -14,6 +14,7 @@
             $hash_password = password_hash($data[PASSWORD], PASSWORD_DEFAULT);
             $db->query("INSERT INTO `users` (`login`, `password`, `icon`) VALUES ('{$data[LOGIN]}', '{$hash_password}', '{$data[ICON]}')");
             $db->query("INSERT INTO `players`(`userID`, `tickets`) VALUES ('{$db->insert_id}', 0)");
+            $userData['ID'] = $db->query("SELECT * FROM `users` WHERE `login` = '{$data[LOGIN]}'")->fetch_assoc()['id'];
             echo json_encode($userData, JSON_UNESCAPED_UNICODE);
         }
         else

@@ -73,7 +73,7 @@ namespace Game.UI
             _teamActiveBlock.Hide();
             _teamInactiveBlock.Show();
 
-            GameManager.TicketsBankController.AddTickets(data.Tickets, this);
+            GameManager.TicketsBankController.AddTickets((uint)data.Tickets, this);
             GameManager.UserData.PlayerData.TeamData.Name = "";
         }
 

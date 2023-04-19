@@ -20,7 +20,7 @@ namespace Game.Bonuses
 
         private void AddTickets()
         {
-            GameManager.TicketsBankController.AddTickets(ChangingValue * Count, this);
+            GameManager.TicketsBankController.AddTickets((uint)(ChangingValue * Count), this);
         }
     }
 }

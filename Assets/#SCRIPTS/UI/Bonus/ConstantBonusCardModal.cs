@@ -35,5 +35,11 @@ namespace Game.UI
             if (bonus is ConstantReusableBonus) _buyButton.gameObject.SetActive(true);
             else _buyButton.gameObject.SetActive(!GameManager.BonusRepositoryController.ContainsBonus(bonus));
         }
+
+        public override void BuyBonus()
+        {
+            base.BuyBonus();
+            CheckBonusUsage();
+        }
     }
 }

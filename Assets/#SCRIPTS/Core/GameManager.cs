@@ -23,6 +23,9 @@ namespace Game.Core
         [SerializeField] private BonusRepositoryController _bonusRepositoryController;
         [SerializeField] private SyncController _syncController;
 
+        [Header("Utils")]
+        [SerializeField] private PoolManager _poolManager;
+
         [Header("User Interface")]
         [SerializeField] private UserInterface _userInterface;
 
@@ -36,6 +39,8 @@ namespace Game.Core
         public static SyncController SyncController { get; private set; }
         public static GameConfig Config { get; private set; }
 
+        public static PoolManager PoolManager;
+
         public static UserInterface UserInterface { get; private set; }
         public static InteractionService InteractionService { get; private set; }
         public static GlobalTimer GlobalTimer { get; private set; }
@@ -47,11 +52,6 @@ namespace Game.Core
         private int _userID = 0;
 
         private void Awake()
-        {
-            Initialize();
-        }
-
-        public void Initialize() 
         {
             Application.targetFrameRate = 120;
 
@@ -67,6 +67,11 @@ namespace Game.Core
             _screensController.Initialize();
             ScreensController = _screensController;
 
+            GetGameUntilTime();
+        }
+
+        public void Initialize(GameUntilTime untilTime, WebOperationStatus webOperationStatus) 
+        {
             _authorizationController.Initialize(_config.DataBaseUrl, _webRequestSender, _userInterface, _screensController);
             _authorizationController.AuthorizationSuccessfull += Run;
         }
@@ -75,6 +80,8 @@ namespace Game.Core
         {
             UserData = userData;
             _userID = userData.ID;
+
+            ScreensController.ShowScreen<LoadingScreen>();
 
             _syncController.Initialize(userData);
             SyncController = _syncController;
@@ -89,13 +96,18 @@ namespace Game.Core
 
             _bonusRepositoryController.Initialize(Config.DataBaseUrl);
             BonusRepositoryController = _bonusRepositoryController;
+            BonusRepositoryController.InitializedEvent.AddListener(OnGameInitialized);
 
             AvatarsController = _avatarsController;
-
             UserInterface.GetScreen<ProfileScreen>().UpdateInfo(userData);
+        }
 
-            ScreensController.ShowScreen<GamingScreen>();
-            _authorizationController.AuthorizationSuccessfull -= Run;
+        private void GetGameUntilTime()
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("Type", "ET");
+
+            WebRequestSender.SendData<GameUntilTime>(Config.DataBaseUrl, form, Initialize);
         }
 
         public void Stop() 
@@ -117,11 +129,16 @@ namespace Game.Core
             WWWForm form = new WWWForm();
             form.AddField("Type", "Save");
             form.AddField("ID", _userID);
-            form.AddField("Tickets", TicketsBankController.Tickets);
+            form.AddField("Tickets", TicketsBankController.Tickets.ToString());
 
-            print(_userID);
+            WebRequestSender.SendData<UserData>(Config.DataBaseUrl, form, null);
+        }
 
-            GameManager.WebRequestSender.SendData<UserData>(GameManager.Config.DataBaseUrl, form, null);
+        private void OnGameInitialized()
+        {
+            PoolManager = _poolManager;
+            ScreensController.ShowScreen<GamingScreen>();
+            _authorizationController.AuthorizationSuccessfull -= Run;
         }
     }
 }

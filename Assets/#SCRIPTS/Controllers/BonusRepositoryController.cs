@@ -6,11 +6,14 @@ using Game.UI;
 using Game.Web;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Controllers
 {
     public class BonusRepositoryController : MonoBehaviour
     {
+        public UnityEvent InitializedEvent = new UnityEvent();
+
         [Header("Handlers")]
         [SerializeField] private TemporaryBonusesHandler _temporaryBonusesHandler;
         [SerializeField] private ConstantBonusesHandler _constantBonusesHandler;
@@ -114,6 +117,10 @@ namespace Game.Controllers
 
             _constantBonusesHandler.Initialize(_stockConstantBonuses, _constantBonusesData);
             _temporaryBonusesHandler.Initialize(_stockTemporaryBonuses, _temporaryBonusesData);
+
+            //Event
+            InitializedEvent.Invoke();
+            InitializedEvent.RemoveAllListeners();
         }
     }
 }
