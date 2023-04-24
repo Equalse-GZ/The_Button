@@ -25,6 +25,7 @@ namespace Game.Core
 
         [Header("Utils")]
         [SerializeField] private PoolManager _poolManager;
+        [SerializeField] private GameTimer _gameTimer;
 
         [Header("User Interface")]
         [SerializeField] private UserInterface _userInterface;
@@ -53,7 +54,7 @@ namespace Game.Core
 
         private void Awake()
         {
-            Application.targetFrameRate = 120;
+            Application.targetFrameRate = 144;
 
             Config = _config;
             WebRequestSender = _webRequestSender;
@@ -72,6 +73,18 @@ namespace Game.Core
 
         public void Initialize(GameUntilTime untilTime, WebOperationStatus webOperationStatus) 
         {
+            if(untilTime.TimeLeft <= 0)
+            {
+                ScreensController.ShowScreen<GameOverScreen>();
+                return;
+            }
+
+            _globalTimer.Initialize();
+            GlobalTimer = _globalTimer;
+
+            _gameTimer.Initialize(untilTime);
+            _gameTimer.TimeOutEvent.AddListener(Stop);
+
             _authorizationController.Initialize(_config.DataBaseUrl, _webRequestSender, _userInterface, _screensController);
             _authorizationController.AuthorizationSuccessfull += Run;
         }
@@ -90,9 +103,6 @@ namespace Game.Core
 
             _mainButtonController.Initialize();
             MainButtonController = _mainButtonController;
-
-            _globalTimer.Initialize();
-            GlobalTimer = _globalTimer;
 
             _bonusRepositoryController.Initialize(Config.DataBaseUrl);
             BonusRepositoryController = _bonusRepositoryController;
@@ -121,6 +131,7 @@ namespace Game.Core
             TicketsBankController.Save();
             Save();
 
+            _gameTimer.TimeOutEvent.RemoveListener(Stop);
             _authorizationController.AuthorizationSuccessfull += Run;
         }
 

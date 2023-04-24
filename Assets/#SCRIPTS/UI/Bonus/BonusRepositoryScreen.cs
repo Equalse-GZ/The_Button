@@ -72,6 +72,7 @@ namespace Game.UI
                 id++;
 
             BonusRepositoryCard card = Instantiate(template, _content);
+            card.transform.SetAsFirstSibling();
             card.ID = id;
             card.UpdateTotalInfo(bonus);
 

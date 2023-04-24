@@ -73,6 +73,8 @@ namespace Game.Controllers
             _globalData.UserPlace = data.UserPlace;
             _globalData.TeamPlace = data.TeamPlace;
 
+            _globalData.GameUntilTime = data.GameUntilTime;
+
             DataRecievedEvent.Invoke(_globalData);
         }
     }

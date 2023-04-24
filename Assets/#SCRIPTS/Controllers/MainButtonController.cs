@@ -40,7 +40,7 @@ namespace Game.Controllers
                 _additionalTickets[ChangingType.Plus] = _additionalTickets.GetValueOrDefault(ChangingType.Plus) - value;
 
             else if (changingType == ChangingType.Divide)
-                _additionalTickets[ChangingType.Multiply] = _additionalTickets.GetValueOrDefault(ChangingType.Multiply) / value;
+                _additionalTickets[ChangingType.Multiply] = _additionalTickets.GetValueOrDefault(ChangingType.Multiply) - value;
 
             else return;
 
@@ -55,9 +55,10 @@ namespace Game.Controllers
 
         private void ChangeAdditionalTickets()
         {
-            print(_additionalTickets[ChangingType.Plus]);
             _addedTickets = _additionalTickets[ChangingType.Plus];
-            _addedTickets *= _additionalTickets[ChangingType.Multiply];
+
+            if(_additionalTickets[ChangingType.Multiply] > 0)
+                _addedTickets *= _additionalTickets[ChangingType.Multiply];
         }
 
         private void OnClick()

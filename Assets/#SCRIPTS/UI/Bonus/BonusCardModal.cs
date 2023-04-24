@@ -24,7 +24,7 @@ namespace Game.UI
 
         [Header("Sounds")]
         [SerializeField] private AudioClip _transactionSuccessSound;
-        [SerializeField] private List<AudioClip> _transactionFailedSounds = new List<AudioClip>();
+        [SerializeField] private AudioClip _transactionFailedSound;
 
         [SerializeField] private float _transactionSuccessSoundVolume = 0.8f;
         [SerializeField] private float _transactionFailedSoundVolume = 0.8f;
@@ -67,7 +67,7 @@ namespace Game.UI
             }
             else
             {
-                _audioSource.clip = _transactionFailedSounds[Random.Range(0, _transactionFailedSounds.Count)];
+                _audioSource.clip = _transactionFailedSound;
                 _audioSource.pitch = Random.Range(0.95f, 1.1f);
                 _audioSource.volume = _transactionFailedSoundVolume;
                 _audioSource.Play();

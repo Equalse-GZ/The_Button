@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: GoldenZ
-  productName: The Button
+  productName: "\u041A\u043D\u043E\u043F\u043A\u0430"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -280,7 +280,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d6b156d2324c5714398a79c36c32e268, type: 3}
+      m_Icon: {fileID: 2800000, guid: f2c0f79268a3bbd4ea2d08eca38047a1, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

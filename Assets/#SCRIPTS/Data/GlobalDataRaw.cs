@@ -10,5 +10,6 @@
         public string Bonuses;
         public int UserPlace;
         public int TeamPlace;
+        public GameUntilTime GameUntilTime;
     }
 }
